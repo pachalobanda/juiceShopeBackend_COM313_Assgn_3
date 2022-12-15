@@ -1,8 +1,19 @@
 import express from 'express'
 import mysql from 'mysql2'
 import cors from 'cors'
+import * as dotenv from 'dotenv' 
+const  {host,username,password,database} dotenv.config()
 
-const conn = mysql.createConnection({host:'localhost',user:'root',password:'',database:'juice store'})
+const conn = mysql.createConnection({host:host,user:username,password:password,database:database})
+const tableSchema  = `CREATE TABLE IF NOT EXISTS USERS (email varchar(100) ,password varchar(100))'
+
+try{
+
+conn.query(tableSchema)
+}catch(err){
+
+console.log(err)
+}
 
 const app = express()
 app.use(express.json())
