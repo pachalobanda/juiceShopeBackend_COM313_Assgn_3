@@ -8,7 +8,7 @@ const { host, username, password, database } = process.env
 console.log(host, username, password, database)
 
 try {
-   const conn = mysql.createConnection({ host: host, user: username, password: password, database: database })
+   const conn = mysql.createConnection({ host: 'localhost', user: 'root', password:'', database: 'database_name' })
    const tableSchema = `CREATE TABLE IF NOT EXISTS USERS (email varchar(100) ,password varchar(100))`
 
     conn.query(tableSchema)
