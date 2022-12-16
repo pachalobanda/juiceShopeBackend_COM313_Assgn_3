@@ -7,21 +7,17 @@ const { host, username, password, database } = process.env
 
 console.log(host, username, password, database)
 
-try {
    const conn = mysql.createConnection({ host: 'localhost', user: 'root', password:'', database: 'database_name' })
    const tableSchema = `CREATE TABLE IF NOT EXISTS USERS (email varchar(100) ,password varchar(100))`
 
     conn.query(tableSchema)
-} catch (err) {
 
-    console.log(err)
-}
 
 const app = express()
 app.use(cors())
 
 app.post("/login", (req, res) => {
-    conn.execute()
+
     try {
         const { email, password } = req.body
         const sql = "INSERT INTO `users`( `email`, `password`) VALUES (?,?)"
